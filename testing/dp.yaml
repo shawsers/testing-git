@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/part-of: testing-deployment
     app.openshift.io/runtime: redhat
   name: testing-deployment
-  namespace: game
+  namespace: testing
 spec:
   replicas: 1
   selector:
