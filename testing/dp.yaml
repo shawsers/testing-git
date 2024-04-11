@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: testing-deployment
+    app.kubernetes.io/component: testing-deployment
+    app.kubernetes.io/instance: testing-deployment
+    app.kubernetes.io/part-of: testing-deployment
+    app.openshift.io/runtime: redhat
+  name: testing-deployment
+  namespace: game
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testing-deployment
+  template:
+    metadata:
+      labels:
+        app: testing-deployment
+        deploymentconfig: testing-deployment
+    spec:
+      containers:
+      - command:
+        - /bin/sh
+        - -c
+        - |
+          sleep infinity
+        image: registry.access.redhat.com/ubi8/ubi:latest
+        imagePullPolicy: Always
+        name: testing-deployment
+        resources:
+          limits:
+            cpu: 1
+            memory: 756Mi
+          requests:
+            cpu: 500m
+            memory: 256Mi
